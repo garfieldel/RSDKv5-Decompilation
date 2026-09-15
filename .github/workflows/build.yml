@@ -147,10 +147,13 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Aceptar Licencias de Android
+      - name: Pre-aprobar licencias de Android SDK
         run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          yes | $ANDROID_HOME/cmdline-tools/16.0/bin/sdkmanager --licenses || true
+          mkdir -p $ANDROID_HOME/licenses
+          echo "247710277bf215c92b21fe730e51d51d60773e23" > $ANDROID_HOME/licenses/android-sdk-license
+          echo "84831b9409646a2b8f3057a73e831704e3218f7a" > $ANDROID_HOME/licenses/android-sdk-preview-license
+          echo "d9058865e52f97170e303f78026368f30486b87d" > $ANDROID_HOME/licenses/android-googletv-license
+          echo "60100715f67363412f9457228b3e07d5a1b6520d" > $ANDROID_HOME/licenses/android-googlexr-license
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
       - name: Build Mania+RSDKv5 Android
