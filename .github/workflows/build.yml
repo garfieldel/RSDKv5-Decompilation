@@ -147,6 +147,8 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+      - name: Accept Android SDK Licenses
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || yes | $ANDROID_HOME/cmdline-tools/16.0/bin/sdkmanager --licenses
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
       - name: Build Mania+RSDKv5 Android
